@@ -25,7 +25,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/customer")
-	public List<Customer> getAllCustomers(@RequestBody Customer customer) {
+	public List<Customer> getAllCustomers() {
 		return customerRepo.findAll();
 	}
 }
