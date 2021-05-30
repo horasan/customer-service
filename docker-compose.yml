@@ -2,21 +2,22 @@ version: '3'
 services:
     customer-service:
         container_name: customer-service
-        image: rizahorasan/customer_service_v1
+        image: rizahorasan/customer-service-image
+        restart: always
         ports: 
-            - 6005:8001
+            - 6006:8001
         environment: 
             WAIT_HOSTS: mysql:3306
         depends_on: 
-            - docker-mysql
-    simple-docker-mysql:
-        container_name: simple-docker-mysql
+            - simple-docker-mysql-2
+    simple-docker-mysql-2:
+        container_name: simple-docker-mysql-2
         image: mysql
         environment: 
             MYSQL_DATABASE: sampledb
             MYSQL_ROOT_PASSWORD: passworddb
             MYSQL_ROOT_HOST: '%'
         ports:
-            - 5005:3306
+            - 3306:3306
         volumes:
             - ./sql_init:/docker-entrypoint-initdb.d        
